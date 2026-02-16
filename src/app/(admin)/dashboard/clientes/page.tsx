@@ -101,8 +101,8 @@ export default function ClientesPage() {
                 <p className="text-slate-500">Gestiona la base de datos de tus clientes e historial de citas.</p>
             </div>
 
-            <div className="flex justify-between items-center gap-4">
-                <div className="relative flex-1 max-w-sm">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div className="relative w-full sm:max-w-sm">
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                     <Input
                         placeholder="Buscar por nombre o WhatsApp..."
@@ -113,58 +113,60 @@ export default function ClientesPage() {
                 </div>
             </div>
 
-            <Card>
-                <CardContent className="p-0">
-                    <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead>Nombre</TableHead>
-                                <TableHead>WhatsApp</TableHead>
-                                <TableHead>Última Cita</TableHead>
-                                <TableHead className="text-right">Acciones</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {filteredCustomers.map((customer) => (
-                                <TableRow key={customer.id}>
-                                    <TableCell className="font-medium">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-600">
-                                                <User className="w-4 h-4" />
-                                            </div>
-                                            {customer.full_name}
-                                        </div>
-                                    </TableCell>
-                                    <TableCell>
-                                        <div className="flex items-center gap-2 text-slate-600">
-                                            <Phone className="w-3.5 h-3.5" />
-                                            {customer.whatsapp_number}
-                                        </div>
-                                    </TableCell>
-                                    <TableCell className="text-slate-500">
-                                        {/* Placeholder for real last appointment date logic */}
-                                        Próximamente
-                                    </TableCell>
-                                    <TableCell className="text-right">
-                                        <Button
-                                            variant="ghost"
-                                            size="sm"
-                                            onClick={() => fetchCustomerDetails(customer)}
-                                        >
-                                            Ver Historial
-                                        </Button>
-                                    </TableCell>
-                                </TableRow>
-                            ))}
-                            {filteredCustomers.length === 0 && !loading && (
+            <Card className="overflow-hidden">
+                <CardContent className="p-0 overflow-x-auto">
+                    <div className="min-w-[600px] md:min-w-full">
+                        <Table>
+                            <TableHeader>
                                 <TableRow>
-                                    <TableCell colSpan={4} className="h-32 text-center text-slate-500">
-                                        No se encontraron clientes.
-                                    </TableCell>
+                                    <TableHead>Nombre</TableHead>
+                                    <TableHead>WhatsApp</TableHead>
+                                    <TableHead>Última Cita</TableHead>
+                                    <TableHead className="text-right">Acciones</TableHead>
                                 </TableRow>
-                            )}
-                        </TableBody>
-                    </Table>
+                            </TableHeader>
+                            <TableBody>
+                                {filteredCustomers.map((customer) => (
+                                    <TableRow key={customer.id}>
+                                        <TableCell className="font-medium">
+                                            <div className="flex items-center gap-3">
+                                                <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-600">
+                                                    <User className="w-4 h-4" />
+                                                </div>
+                                                {customer.full_name}
+                                            </div>
+                                        </TableCell>
+                                        <TableCell>
+                                            <div className="flex items-center gap-2 text-slate-600">
+                                                <Phone className="w-3.5 h-3.5" />
+                                                {customer.whatsapp_number}
+                                            </div>
+                                        </TableCell>
+                                        <TableCell className="text-slate-500">
+                                            {/* Placeholder for real last appointment date logic */}
+                                            Próximamente
+                                        </TableCell>
+                                        <TableCell className="text-right">
+                                            <Button
+                                                variant="ghost"
+                                                size="sm"
+                                                onClick={() => fetchCustomerDetails(customer)}
+                                            >
+                                                Ver Historial
+                                            </Button>
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
+                                {filteredCustomers.length === 0 && !loading && (
+                                    <TableRow>
+                                        <TableCell colSpan={4} className="h-32 text-center text-slate-500">
+                                            No se encontraron clientes.
+                                        </TableCell>
+                                    </TableRow>
+                                )}
+                            </TableBody>
+                        </Table>
+                    </div>
                 </CardContent>
             </Card>
 

@@ -208,14 +208,14 @@ export default function CatalogoPage() {
                 </TabsList>
 
                 <TabsContent value="services" className="mt-6 space-y-4">
-                    <div className="flex justify-between items-center">
-                        <div className="relative w-full max-w-sm">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                        <div className="relative w-full sm:max-w-sm">
                             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                             <Input placeholder="Buscar servicio..." className="pl-10" />
                         </div>
                         <Dialog open={isServiceDialogOpen} onOpenChange={setIsServiceDialogOpen}>
                             <DialogTrigger asChild>
-                                <Button className="bg-purple-600 hover:bg-purple-700">
+                                <Button className="bg-purple-600 hover:bg-purple-700 w-full sm:w-auto">
                                     <Plus className="w-4 h-4 mr-2" />
                                     Nuevo Servicio
                                 </Button>
@@ -300,14 +300,14 @@ export default function CatalogoPage() {
                 </TabsContent>
 
                 <TabsContent value="professionals" className="mt-6 space-y-4">
-                    <div className="flex justify-between items-center">
-                        <div className="relative w-full max-w-sm">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                        <div className="relative w-full sm:max-w-sm">
                             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                             <Input placeholder="Buscar profesional..." className="pl-10" />
                         </div>
                         <Dialog open={isProfessionalDialogOpen} onOpenChange={setIsProfessionalDialogOpen}>
                             <DialogTrigger asChild>
-                                <Button className="bg-purple-600 hover:bg-purple-700">
+                                <Button className="bg-purple-600 hover:bg-purple-700 w-full sm:w-auto">
                                     <Plus className="w-4 h-4 mr-2" />
                                     Agregar Profesional
                                 </Button>
