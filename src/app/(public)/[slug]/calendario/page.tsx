@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
 import {
@@ -28,14 +28,14 @@ import { Calendar } from '@/components/ui/calendar';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
 
-export default function CalendarSelection({ params }: { params: { slug: string } }) {
+export default function CalendarSelection({ params }: { params: Promise<{ slug: string }> }) {
     const [date, setDate] = useState<Date | undefined>(new Date());
     const [availableSlots, setAvailableSlots] = useState<Date[]>([]);
     const [selectedSlot, setSelectedSlot] = useState<Date | null>(null);
     const [loading, setLoading] = useState(false);
     const [bookingState, setBookingState] = useState<any>(null);
     const router = useRouter();
-    const { slug } = params;
+    const { slug } = use(params);
 
     useEffect(() => {
         const state = JSON.parse(sessionStorage.getItem('booking_state') || '{}');

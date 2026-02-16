@@ -19,10 +19,10 @@ import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
 
 const menuItems = [
-    { name: 'Agenda', icon: Calendar, href: '/admin/dashboard/agenda' },
-    { name: 'Clientes', icon: Users, href: '/admin/dashboard/clientes' },
-    { name: 'Catálogo', icon: Briefcase, href: '/admin/dashboard/catalogo' },
-    { name: 'Configuración', icon: Settings, href: '/admin/dashboard/config' },
+    { name: 'Agenda', icon: Calendar, href: '/dashboard/agenda' },
+    { name: 'Clientes', icon: Users, href: '/dashboard/clientes' },
+    { name: 'Catálogo', icon: Briefcase, href: '/dashboard/catalogo' },
+    { name: 'Configuración', icon: Settings, href: '/dashboard/config' },
 ];
 
 export function Sidebar() {
@@ -32,7 +32,7 @@ export function Sidebar() {
 
     const handleLogout = async () => {
         await supabase.auth.signOut();
-        router.push('/admin/login');
+        router.push('/login');
     };
 
     return (

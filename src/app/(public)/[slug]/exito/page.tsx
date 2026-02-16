@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, use } from 'react';
 import Link from 'next/link';
 import {
     CheckCircle,
@@ -16,9 +16,9 @@ import { Card, CardContent } from '@/components/ui/card';
 import { format, parseISO } from 'date-fns';
 import { es } from 'date-fns/locale';
 
-export default function BookingSuccess({ params }: { params: { slug: string } }) {
+export default function BookingSuccess({ params }: { params: Promise<{ slug: string }> }) {
     const [appointment, setAppointment] = useState<any>(null);
-    const { slug } = params;
+    const { slug } = use(params);
 
     useEffect(() => {
         const last = sessionStorage.getItem('last_booking');

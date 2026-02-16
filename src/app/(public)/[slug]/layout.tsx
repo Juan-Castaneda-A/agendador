@@ -6,9 +6,9 @@ export default async function PublicLayout({
     params,
 }: {
     children: React.ReactNode;
-    params: { slug: string };
+    params: Promise<{ slug: string }>;
 }) {
-    const { slug } = params;
+    const { slug } = await params;
 
     // Since this is a server component, we fetch metadata for the organization
     const { data: organization } = await supabase

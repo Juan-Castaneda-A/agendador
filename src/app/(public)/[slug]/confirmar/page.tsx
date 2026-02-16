@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
 import {
@@ -24,13 +24,13 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 
-export default function BookingConfirmation({ params }: { params: { slug: string } }) {
+export default function BookingConfirmation({ params }: { params: Promise<{ slug: string }> }) {
     const [name, setName] = useState('');
     const [whatsapp, setWhatsapp] = useState('');
     const [loading, setLoading] = useState(false);
     const [bookingState, setBookingState] = useState<any>(null);
     const router = useRouter();
-    const { slug } = params;
+    const { slug } = use(params);
 
     useEffect(() => {
         const state = JSON.parse(sessionStorage.getItem('booking_state') || '{}');

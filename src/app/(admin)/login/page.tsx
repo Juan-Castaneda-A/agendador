@@ -28,7 +28,7 @@ export default function LoginPage() {
             if (error) throw error;
 
             toast.success('¡Bienvenido de nuevo!');
-            router.push('/admin/dashboard/agenda');
+            router.push('/dashboard/agenda');
             router.refresh();
         } catch (error: any) {
             toast.error(error.message || 'Error al iniciar sesión');

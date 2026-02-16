@@ -23,7 +23,7 @@ export default function Home() {
         </p>
 
         <div className="flex gap-4">
-          <Link href="/admin/login">
+          <Link href="/login">
             <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100 font-bold text-lg px-8 py-6 rounded-full shadow-xl">
               Acceso Administrador
             </Button>

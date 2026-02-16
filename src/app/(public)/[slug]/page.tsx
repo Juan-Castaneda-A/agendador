@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
 import {
@@ -13,11 +13,11 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { toast } from 'sonner';
 
-export default function BusinessLanding({ params }: { params: { slug: string } }) {
+export default function BusinessLanding({ params }: { params: Promise<{ slug: string }> }) {
     const [services, setServices] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
     const router = useRouter();
-    const { slug } = params;
+    const { slug } = use(params);
 
     useEffect(() => {
         fetchServices();
